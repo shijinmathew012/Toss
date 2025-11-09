@@ -1,36 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Navigation
-    const coinTossNav = document.getElementById('coin-toss-nav');
-    const diceRollNav = document.getElementById('dice-roll-nav');
-    const coinTossTool = document.getElementById('coin-toss-tool');
-    const diceRollTool = document.getElementById('dice-roll-tool');
+    // Tab Navigation
+    const tabs = document.querySelectorAll('.tab-link');
+    const tools = document.querySelectorAll('.tool');
 
-    coinTossNav.addEventListener('click', () => {
-        coinTossTool.hidden = false;
-        diceRollTool.hidden = true;
-    });
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Deactivate all tabs and hide all tools
+            tabs.forEach(t => t.classList.remove('active'));
+            tools.forEach(tool => tool.hidden = true);
 
-    diceRollNav.addEventListener('click', () => {
-        coinTossTool.hidden = true;
-        diceRollTool.hidden = false;
+            // Activate the clicked tab and show the corresponding tool
+            tab.classList.add('active');
+            const toolId = tab.getAttribute('data-tool');
+            document.getElementById(toolId).hidden = false;
+        });
     });
 
     // Coin Toss
     const tossButton = document.getElementById('toss-button');
     const coinTossResultDiv = document.getElementById('coin-toss-result');
+    const coin = document.getElementById('coin');
 
     tossButton.addEventListener('click', () => {
-        const outcomes = ['Heads', 'Tails'];
-        const result = outcomes[Math.floor(Math.random() * outcomes.length)];
-        coinTossResultDiv.textContent = result;
+        coinTossResultDiv.textContent = '';
+        coin.classList.add('flipping');
+
+        setTimeout(() => {
+            coin.classList.remove('flipping');
+            const outcomes = ['Heads', 'Tails'];
+            const result = outcomes[Math.floor(Math.random() * outcomes.length)];
+            coinTossResultDiv.textContent = result;
+        }, 1000);
     });
 
     // Dice Roll
     const rollButton = document.getElementById('roll-button');
     const diceRollResultDiv = document.getElementById('dice-roll-result');
+    const dice = document.getElementById('dice');
+    const diceFace = dice.querySelector('.face');
 
     rollButton.addEventListener('click', () => {
-        const result = Math.floor(Math.random() * 6) + 1;
-        diceRollResultDiv.textContent = result;
+        diceRollResultDiv.textContent = '';
+        dice.classList.add('rolling');
+
+        const interval = setInterval(() => {
+            const randomFace = Math.floor(Math.random() * 6) + 1;
+            diceFace.textContent = randomFace;
+        }, 100);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            dice.classList.remove('rolling');
+            const result = Math.floor(Math.random() * 6) + 1;
+            diceFace.textContent = result;
+            diceRollResultDiv.textContent = `You rolled a ${result}`;
+        }, 1000);
     });
 });

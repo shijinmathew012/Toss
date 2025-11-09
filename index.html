@@ -9,17 +9,24 @@
 <body>
     <div class="container">
         <h1>Toss</h1>
-        <nav>
-            <button id="coin-toss-nav">Coin Toss</button>
-            <button id="dice-roll-nav">Roll a Die</button>
-        </nav>
+        <div class="tabs">
+            <button class="tab-link active" data-tool="coin-toss-tool">Coin Toss</button>
+            <button class="tab-link" data-tool="dice-roll-tool">Roll a Die</button>
+        </div>
         <div id="coin-toss-tool" class="tool">
             <h2>Coin Toss</h2>
+            <div id="coin" class="coin">
+                <div class="heads">H</div>
+                <div class="tails">T</div>
+            </div>
             <button id="toss-button">Toss Coin</button>
             <div id="coin-toss-result"></div>
         </div>
         <div id="dice-roll-tool" class="tool" hidden>
             <h2>Roll a Die</h2>
+            <div id="dice" class="dice">
+                <span class="face">1</span>
+            </div>
             <button id="roll-button">Roll Die</button>
             <div id="dice-roll-result"></div>
         </div>
