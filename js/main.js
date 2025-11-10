@@ -56,4 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
             diceRollResultDiv.textContent = `You rolled a ${result}`;
         }, 1000);
     });
+
+    // Wheel Spinner
+    const spinButton = document.getElementById('spin-button');
+    const wheel = document.getElementById('wheel');
+    const wheelSpinnerResultDiv = document.getElementById('wheel-spinner-result');
+    const segments = 6;
+    let currentRotation = 0;
+
+    spinButton.addEventListener('click', () => {
+        wheelSpinnerResultDiv.textContent = '';
+        const randomRotation = Math.floor(Math.random() * 360) + 360 * 5; // Spin at least 5 times
+        currentRotation += randomRotation;
+        wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+        setTimeout(() => {
+            const finalRotation = currentRotation % 360;
+            const segmentAngle = 360 / segments;
+            const winningSegment = Math.floor((360 - finalRotation) / segmentAngle);
+            const winningNumber = winningSegment + 1;
+            wheelSpinnerResultDiv.textContent = `You landed on ${winningNumber}`;
+        }, 4000);
+    });
 });

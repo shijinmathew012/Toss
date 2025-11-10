@@ -12,6 +12,7 @@
         <div class="tabs">
             <button class="tab-link active" data-tool="coin-toss-tool">Coin Toss</button>
             <button class="tab-link" data-tool="dice-roll-tool">Roll a Die</button>
+            <button class="tab-link" data-tool="wheel-spinner-tool">Wheel Spinner</button>
         </div>
         <div id="coin-toss-tool" class="tool">
             <h2>Coin Toss</h2>
@@ -29,6 +30,22 @@
             </div>
             <button id="roll-button">Roll Die</button>
             <div id="dice-roll-result"></div>
+        </div>
+        <div id="wheel-spinner-tool" class="tool" hidden>
+            <h2>Wheel Spinner</h2>
+            <div class="wheel-container">
+                <div id="wheel" class="wheel">
+                    <div class="number" style="--i:1;"><span>1</span></div>
+                    <div class="number" style="--i:2;"><span>2</span></div>
+                    <div class="number" style="--i:3;"><span>3</span></div>
+                    <div class="number" style="--i:4;"><span>4</span></div>
+                    <div class="number" style="--i:5;"><span>5</span></div>
+                    <div class="number" style="--i:6;"><span>6</span></div>
+                </div>
+                <div class="pointer"></div>
+            </div>
+            <button id="spin-button">Spin</button>
+            <div id="wheel-spinner-result"></div>
         </div>
     </div>
     <script src="js/main.js"></script>

@@ -72,6 +72,24 @@ button:hover {
     color: #f1c40f;
 }
 
+.number {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: rotate(calc(60deg * var(--i)));
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.number span {
+    display: inline-block;
+    transform: rotate(-90deg) translateY(-100px);
+}
+
 .coin {
     position: relative;
     width: 100px;
@@ -136,4 +154,45 @@ button:hover {
     60% { transform: rotate(0) scale(1); }
     75% { transform: rotate(-180deg) scale(1.2); }
     100% { transform: rotate(360deg) scale(1); }
+}
+
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: conic-gradient(
+        #e74c3c 0deg 60deg,
+        #f1c40f 60deg 120deg,
+        #2ecc71 120deg 180deg,
+        #3498db 180deg 240deg,
+        #9b59b6 240deg 300deg,
+        #e67e22 300deg 360deg
+    );
+    transition: transform 4s ease-out;
+}
+
+.pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #ecf0f1;
+}
+
+#wheel-spinner-result {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #f1c40f;
 }
