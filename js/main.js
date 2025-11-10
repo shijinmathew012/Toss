@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger Menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mainNav = document.getElementById('main-nav');
+
+    hamburgerBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+
     // Tab Navigation
     const tabs = document.querySelectorAll('.tab-link');
     const tools = document.querySelectorAll('.tool');
@@ -13,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.classList.add('active');
             const toolId = tab.getAttribute('data-tool');
             document.getElementById(toolId).hidden = false;
+
+            // Close the nav on mobile after selection
+            if (window.innerWidth <= 768) {
+                mainNav.classList.remove('active');
+            }
         });
     });
 
