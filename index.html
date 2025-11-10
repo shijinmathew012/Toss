@@ -9,11 +9,14 @@
 <body>
     <div class="container">
         <h1>Toss</h1>
-        <div class="tabs">
-            <button class="tab-link active" data-tool="coin-toss-tool">Coin Toss</button>
-            <button class="tab-link" data-tool="dice-roll-tool">Roll a Die</button>
-            <button class="tab-link" data-tool="wheel-spinner-tool">Wheel Spinner</button>
-        </div>
+        <button id="hamburger-btn" class="hamburger">&#9776;</button>
+        <nav id="main-nav">
+            <div class="tabs">
+                <button class="tab-link active" data-tool="coin-toss-tool">Coin Toss</button>
+                <button class="tab-link" data-tool="dice-roll-tool">Roll a Die</button>
+                <button class="tab-link" data-tool="wheel-spinner-tool">Wheel Spinner</button>
+            </div>
+        </nav>
         <div id="coin-toss-tool" class="tool">
             <h2>Coin Toss</h2>
             <div id="coin" class="coin">
