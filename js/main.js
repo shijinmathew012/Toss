@@ -34,14 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const coinTossResultDiv = document.getElementById('coin-toss-result');
     const coin = document.getElementById('coin');
 
+    let coinRotation = 0;
     tossButton.addEventListener('click', () => {
         coinTossResultDiv.textContent = '';
-        coin.classList.add('flipping');
+        const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
+        const randomSpins = Math.floor(Math.random() * 4) + 5; // 5 to 8 full spins
+
+        coinRotation += (randomSpins * 360);
+        if (result === 'Tails') {
+            coinRotation += 180;
+        }
+
+        coin.style.transform = `rotateY(${coinRotation}deg)`;
 
         setTimeout(() => {
-            coin.classList.remove('flipping');
-            const outcomes = ['Heads', 'Tails'];
-            const result = outcomes[Math.floor(Math.random() * outcomes.length)];
             coinTossResultDiv.textContent = result;
         }, 1000);
     });
